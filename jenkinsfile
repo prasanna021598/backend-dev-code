@@ -7,7 +7,7 @@ pipeline {
         timeout(time: 30, unit: 'SECONDS')
     }
      environment {
-        NEXUS_URL = 'http://3.84.135.37:8081/repository/expense-backend/' // Replace with your Nexus URL
+        NEXUS_URL = 'http://3.84.135.37:8081/' // Replace with your Nexus URL
         NEXUS_CREDENTIALS_ID = 'nexus-cred' // Jenkins credentials ID for Nexus
     }
     stages {
@@ -39,6 +39,7 @@ pipeline {
                                          protocol: 'http', 
                                          repository: 'expense-backend', 
                                          version: '1.0.0'
+                                         nexusVersion: 'nexus3'
                 }
             }
         }
