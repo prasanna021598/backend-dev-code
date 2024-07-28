@@ -36,7 +36,7 @@ pipeline {
                         artifacts: [[
                             artifactId: 'backend', // Replace with your artifact ID
                             classifier: '',
-                            file: 'backend.zip',
+                            file: "backend.zip",
                             type: 'zip'
                         ]],
                         credentialsId: "${env.NEXUS_CREDENTIALS_ID}",
@@ -49,7 +49,7 @@ pipeline {
                     )
 
                 }
-                }
+            }
         }
     
     }
