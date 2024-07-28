@@ -6,6 +6,10 @@ pipeline {
         // Timeout counter starts AFTER agent is allocated
         timeout(time: 30, unit: 'SECONDS')
     }
+     environment {
+        NEXUS_URL = 'http://3.84.135.37:8081/repository/expense-backend/' // Replace with your Nexus URL
+        NEXUS_CREDENTIALS_ID = 'nexus-auth' // Jenkins credentials ID for Nexus
+    }
     stages {
         stage('Install dependencies') {
             steps {
@@ -22,5 +26,20 @@ pipeline {
                 """
             }
         }
-    }
+         stage('Upload to Nexus') {
+            steps {
+                script {
+                    nexusArtifactUploader artifacts: [[artifactId: 'backend', 
+                                                       classifier: '', 
+                                                       file: 'backend.zip', 
+                                                       type: 'zip']], 
+                                         credentialsId: "${env.NEXUS_CREDENTIALS_ID}", 
+                                         groupId: 'com.example', 
+                                         nexusUrl: "${env.NEXUS_URL}", 
+                                         protocol: 'http', 
+                                         repository: 'my-repo', 
+                                         version: '1.0.0'
+                }
+            }
+        }
 }
