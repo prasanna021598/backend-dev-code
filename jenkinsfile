@@ -18,7 +18,7 @@ pipeline {
         stage('Zipping the code') {
             steps {
                 sh """
-                zip -r backend.zip /* -x "jenkinsfile"
+                zip -r backend.zip /* -x jenkinsfile 
                 """
             }
         }
