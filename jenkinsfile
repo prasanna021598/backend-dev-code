@@ -26,7 +26,21 @@ pipeline {
                 """
             }
         }
-
-         
+         stage('Upload to Nexus') {
+            steps {
+                script {
+                    nexusArtifactUploader artifacts: [[artifactId: 'backend', 
+                                                       classifier: '', 
+                                                       file: 'backend.zip', 
+                                                       type: 'zip']], 
+                                         credentialsId: "${env.NEXUS_CREDENTIALS_ID}", 
+                                         groupId: 'com.example', 
+                                         nexusUrl: "${env.NEXUS_URL}", 
+                                         protocol: 'http', 
+                                         repository: 'expense-backend', 
+                                         version: '1.0.0'
+                }
+            }
+        }
     }
 }
