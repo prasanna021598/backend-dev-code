@@ -11,6 +11,14 @@ pipeline {
             steps {
                 sh """
                     npm install
+                    ls -ltr
+                """
+            }
+        }
+        stage('Zipping the code') {
+            steps {
+                sh """
+                zip -r backend.zip /* -x "jenkinsfile" "backend.*"
                 """
             }
         }
