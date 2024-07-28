@@ -39,12 +39,13 @@ pipeline {
                             file: 'backend.zip',
                             type: 'zip'
                         ]],
-                         credentialsId: "${env.NEXUS_CREDENTIALS_ID}",
+                        credentialsId: "${env.NEXUS_CREDENTIALS_ID}",
                         groupId: 'com.expense', // Replace with your group ID
                         nexusUrl: "${env.NEXUS_URL}",
                         protocol: 'http',
                         repository: 'expense-backend', // Replace with your repository name
                         //version: "${env.VERSION}"
+                        nexusVersion: "nexus3"
                     )
 
                 }
