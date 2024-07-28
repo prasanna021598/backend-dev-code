@@ -8,7 +8,7 @@ pipeline {
     }
      environment {
         NEXUS_URL = 'http://3.84.135.37:8081/repository/expense-backend/' // Replace with your Nexus URL
-        NEXUS_CREDENTIALS_ID = 'nexus-auth' // Jenkins credentials ID for Nexus
+        NEXUS_CREDENTIALS_ID = 'nexus-cred' // Jenkins credentials ID for Nexus
     }
     stages {
         stage('Install dependencies') {
@@ -26,21 +26,7 @@ pipeline {
                 """
             }
         }
-         stage('Upload to Nexus') {
-            steps {
-                script {
-                    nexusArtifactUploader artifacts: [[artifactId: 'backend', 
-                                                       classifier: '', 
-                                                       file: 'backend.zip', 
-                                                       type: 'zip']], 
-                                         credentialsId: "${env.NEXUS_CREDENTIALS_ID}", 
-                                         groupId: 'com.example', 
-                                         nexusUrl: "${env.NEXUS_URL}", 
-                                         protocol: 'http', 
-                                         repository: 'expense-backend', 
-                                         version: '1.0.0'
-                }
-            }
-        }
+
+         
     }
 }
