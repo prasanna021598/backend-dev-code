@@ -7,7 +7,7 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
     }
      environment {
-        NEXUS_URL = '3.84.135.37:8081' // Replace with your Nexus URL and repository name
+        NEXUS_URL = 'nexus.itindustry.online:8081' // Replace with your Nexus URL and repository name
         NEXUS_CREDENTIALS_ID = 'nexus-cred' // Use the ID of the credentials you added
         //VERSION = "1.0.${BUILD_NUMBER}" // Example of using build number
     }
@@ -43,7 +43,7 @@ pipeline {
                         groupId: 'com.expense', // Replace with your group ID
                         nexusUrl: "${env.NEXUS_URL}",
                         protocol: 'http',
-                        repository: 'expense-backend', // Replace with your repository name
+                        repository: 'backend-expense', // Replace with your repository name
                         //version: "${env.VERSION}"
                         nexusVersion: "nexus3"
                     )
