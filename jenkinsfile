@@ -41,10 +41,7 @@ pipeline {
             }
         }
         }
-    }
-
-
-
+    
         stage('Upload to Nexus') {
             steps {
                 script {
@@ -67,5 +64,6 @@ pipeline {
                 }
             }
         }
+    }
     
 }
