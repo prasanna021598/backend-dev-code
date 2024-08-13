@@ -29,6 +29,19 @@ pipeline {
             }
         }
 
+        stage('Sonar Scan') {
+            environment {
+                scannerHome = tool 'sonar-06' //refering scanner cli , got from geeks for geeks
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('sonar-06') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+            }
+        }
+
+
         stage('Upload to Nexus') {
             steps {
                 script {
