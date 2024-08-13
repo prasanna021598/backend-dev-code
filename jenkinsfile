@@ -40,6 +40,8 @@ pipeline {
                     }
             }
         }
+        }
+    }
 
 
         stage('Upload to Nexus') {
